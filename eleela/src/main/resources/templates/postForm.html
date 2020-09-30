@@ -7,36 +7,33 @@
 	<!-- Import Google Iconf Font -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
 <body>
 	<header>
 		<nav class="navbar navbar-light bg-light">
 			<span class="navbar-brand mb-01 h1" style="font-weight: bold;">Ele&Ela</span>
-			<a href="/newpost" class="btn btn-primary" role="button">Novo Post</a>
 		</nav>		
 	</header>
 	<section>
 		<div class="container" style="width: 60%; padding-bottom: 30px;">
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item active" aria-current="page">Posts</li>
+			    <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Novo Post</li>
 			  </ol>
 			</nav>
-		
-			<div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
-			  	<div class="card-body">
-			  		<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
-			  			<span th:text="${post.autor}"></span>
-			  			<span th:text="${post.data}"></span>
-			  		</p>
-			  		
-			  		<a th:href="${(#mvc.url('EC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
-			  		
-			  		<p class="card-text">
-			  			<span th:utext="${#strings.abbreviate(post.texto,200)}"></span>
-			  		</p>
-			  		
-			  	</div>
+			<div>
+				<form method="post">
+					<div class="form-group">
+						<input type="text" class="form-control" name="titulo" placeholder="Título *">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name="autor" placeholder="Autor *">
+					</div>
+					<textarea type="text" class="form-control" name="texto" placeholder="Texto *"></textarea>
+					<small class="form-text text-muted">(*) Campos obrigatórios</small>
+					<button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
+					<a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+				</form>			
 			</div>
 		</div>
 	</section>
