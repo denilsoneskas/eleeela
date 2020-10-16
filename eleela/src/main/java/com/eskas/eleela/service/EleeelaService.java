@@ -11,5 +11,9 @@ public interface EleeelaService {
 	Post findById(long id);
 	
 	Post save(Post post);
-
+	
+	public void delete(Post post);
+	
+	Post deleteById(long id);
+	
 }

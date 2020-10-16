@@ -12,6 +12,7 @@
 <body>
 	<header>
 		<nav class="navbar navbar-light bg-light">
+			
 			<span class="navbar-brand mb-01 h1" style="font-weight: bold;">Ele&Ela</span>
 			<a href="/newpost" class="btn btn-primary" role="button">Novo Post</a>
 		</nav>		
@@ -21,7 +22,7 @@
 			<nav aria-label="breadcrumb">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">Post</li>
+			    <li class="breadcrumb-item active" aria-current="page"><span th:text="${post.titulo}"></li>
 			  </ol>
 			</nav>
 			<article>
@@ -37,7 +38,11 @@
 	                <p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p>
 	            </section>
 	        </article>
-		
+	        <div class="card-footer">
+<!-- 				<a href="/commentpost" class="btn btn-outline-primary" role="button">Comentar</a> -->
+				<a th:href="${(#mvc.url('EC#editPost').arg(0, post.id)).build()}" class="btn btn-outline-warning" role="button">Editar Post</a>
+		 		<a th:href="${(#mvc.url('EC#deletePost').arg(0, post.id)).build()}" class="btn btn-outline-danger" role="button">Deletar Post</a>
+	 		</div>
 		</div>
 	</main>
 </body>

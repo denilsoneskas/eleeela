@@ -30,6 +30,15 @@ public class EleeelaServiceImpl implements EleeelaService {
 		return eleeelaRepository.save(post);
 	}
 	
-	
+	@Override
+	public Post deleteById(long id) {
+		eleeelaRepository.deleteById(id);
+		return null;
+	}
 
+	@Override
+	public void delete(Post post) {
+		eleeelaRepository.delete(post);
+	}
+	
 }
